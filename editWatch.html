@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{'/css/main.css'}">
+</head>
+<body>
+
+<th:block th:insert="layout::header"></th:block>
+
+<section id="content">
+
+    <h3>Edit Watch</h3>
+
+    <form method="post" th:action="@{'/edit-watch'}">
+        <div class="mb-3">
+            <label for="brandInput" class="form-label">Brand</label>
+            <input th:value="${watch.brand()}" type="text" name="brand" class="form-control" id="brandInput" aria-describedby="brandHelp">
+            <div id="brandHelp" class="form-text">What brand is the watch?</div>
+        </div>
+        <div class="mb-3">
+            <label for="modelInput" class="form-label">Model</label>
+            <input th:value="${watch.make()}" type="text" name="watchModel" class="form-control" id="modelInput" aria-describedby="modelHelp">
+            <div id="modelHelp" class="form-text">What model is the watch?</div>
+        </div>
+        <div class="mb-3">
+            <label for="costInput" class="form-label">Cost</label>
+            <input th:value="${watch.price()}" type="text" name="cost" class="form-control" id="costInput" aria-describedby="costHelp">
+            <div id="costHelp" class="form-text">How much does the watch cost?</div>
+        </div>
+        <input type="hidden" name="watchId" th:value="${watch.id()}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</section>
+
+<th:block th:insert="layout::footer"></th:block>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>

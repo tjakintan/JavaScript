@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+  <th:block th:fragment="header">
+    <header>
+      <img class="logo" th:src="@{'/img/hublot.jpg'}" alt="logo">
+      <h1 class="display-1">Match Warketplace</h1>
+      <p class="lead">
+        We are a trusted online jeweler.
+      </p>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link" href="/contact">Contact Us</a>
+              <a class="nav-link" href="/about">About Us</a>
+              <a class="nav-link" href="/careers">Careers</a>
+              <a sec:authorize="isAuthenticated()" class="nav-link" href="/add-watch">Add Watch</a>
+              <a sec:authorize="isAnonymous()" class="nav-link" href="/login">Admin Login</a>
+            </div>
+          </div>
+          <form class="d-flex" role="search" method="post" th:action="@{'/search'}">
+            <input class="form-control me-2" name="searchParam" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+  </th:block>
+
+  <th:block th:fragment="footer">
+    <footer>
+      <cite>&copy; 2023 Match Warketplace</cite>
+    </footer>
+  </th:block>
+
+
+</body>
+</html>
